@@ -1,3 +1,3 @@
 module EC2/main
 
-go 1.21.3
+go 1.21

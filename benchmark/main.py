@@ -2,10 +2,8 @@ import os
 import requests
 import time
 import logging
-
-LAMBDA_URL = os.environ.get("LAMBDA_URL", "hi")
-EC2_URL = os.environ.get("EC2_URL", "mom")
-
+from concurrent.futures import ThreadPoolExecutor
+from constants import *
 
 def lambda_measure_cold_start_latency():
 	logging.info("Measuring Lambda Cold Start Performance")
@@ -17,7 +15,15 @@ def lambda_measure_cold_start_latency():
 
 
 def main():
-	print(f"{lambda_measure_cold_start_latency()} ms")
+	with ThreadPoolExecutor(max_workers=4) as executor:
+		execs = []
+		for i in range(500):
+			a = executor.submit(pow, 2, 2000)
+			# instead of power, this should make requests, but like for 30 seconds
+			execs.append(a)
+
+		for e in execs:
+			print(e.result())
 
 
 if __name__ == "__main__":

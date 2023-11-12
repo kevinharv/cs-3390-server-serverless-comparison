@@ -9,4 +9,5 @@ COPY . .
 # RUN go build -v -o /usr/local/bin/app ./...
 RUN go build -v
 
+EXPOSE 8080
 CMD ["./main"]

@@ -3,10 +3,10 @@ This repository contains the source code for a simple HTTP server to benchmark t
 
 ## Design
 ### EC2 Container
-A simple HTTP server will be created with one endpoint. It will provide a simple response when a GET request is made to the endpoint.
+A simple HTTP server will be created with one endpoint. It will respond with "Hello World!" when a GET request is made. 
 
 ### Lambda Function
-Due to the nature of the Lambda function abstraction, little code is required to create an HTTP endpoint. The function will simply return a value to the request at the endpoint exposed by the function URL.
+Due to the nature of the Lambda function abstraction, little code is required to create an HTTP endpoint. It also returns "Hello World!" in plain text.
 
 ## Tests
 The test suite will compare the times for first response after various time intervals. The program will wait 0.1, 0.5, 1, 5, 10, 30, and 60 seconds between requests and see how the performance changes. Additionally, the response time for the first cold start API call will be measured.

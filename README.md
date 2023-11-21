@@ -9,6 +9,4 @@ A simple HTTP server will be created with one endpoint. It will respond with "He
 Due to the nature of the Lambda function abstraction, little code is required to create an HTTP endpoint. It also returns "Hello World!" in plain text.
 
 ## Tests
-The test suite will compare the times for first response after various time intervals. The program will wait 0.1, 0.5, 1, 5, 10, 30, and 60 seconds between requests and see how the performance changes. Additionally, the response time for the first cold start API call will be measured.
-
-Measurement of throughput will be achieved by sending as many requests with as many threads as possible to each of the programs and measuring how many responses are returned in a given timeframe. Each thread will wait for a response before sending the next request, but there will be multiple threads to avoid the client bottlenecking the test.
+The benchmark program makes as many requests to both the Lambda function and the ECS container as possible. It measures the response times for both and writes the data to a CSV file. This can be analyzed and graphed in Excel to draw conclusions about the relaive performance of the two paradigms/technologies.
